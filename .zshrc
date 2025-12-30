@@ -28,7 +28,7 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
-bindkey -s '^f' 'command -v tmux-sessionizer >/dev/null && tmux-sessionizer\n'
+bindkey -s '^f' ' command -v tmux-sessionizer >/dev/null && tmux-sessionizer\n'
 
 # History
 HISTSIZE=5000
