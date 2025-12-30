@@ -11,36 +11,35 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 
 # Load completions
 autoload -Uz +X compinit && compinit
 autoload -Uz +X bashcompinit && bashcompinit
 autoload -Uz edit-command-line
+autoload -Uz zmv
 
 # Keybindings
-bindkey -v '^?' backward-delete-char
+bindkey -v 
+bindkey '^?' backward-delete-char
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 zle -N edit-command-line
-bindkey '^X^E' edit-command-line
-bindkey -s '^f' ' tmux-sessionizer\n'
+bindkey '^x^e' edit-command-line
+bindkey -s '^f' 'command -v tmux-sessionizer >/dev/null && tmux-sessionizer\n'
 
 # History
 HISTSIZE=5000
+SAVEHIST=5000
 HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-setopt GLOB_DOTS
+setopt glob_dots
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -53,14 +52,17 @@ alias vim='nvim'
 alias k='kubectl'
 
 # ENV
-EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/nvim
+export MANPAGER='nvim +Man!'
+export KEYTIMEOUT=1
+export GOPATH=$HOME/go
 PATH=$PATH:$HOME/.local/bin
-GOPATH=$HOME/go
 PATH=$PATH:$GOPATH/bin
 PATH=$PATH:/usr/local/go/bin
-export MANPAGER='nvim +Man!'
+
 # FZF
 export FZF_DEFAULT_OPTS='--reverse'
 source <(fzf --zsh)
+
 # STARSHIP
 eval "$(starship init zsh)"
