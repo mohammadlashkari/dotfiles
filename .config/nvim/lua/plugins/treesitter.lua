@@ -1,25 +1,20 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"c",
-				"bash",
-				"go",
-				"lua",
-				"markdown",
-				"vimdoc",
-			},
-			auto_install = true,
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = true,
-				disable = { "latex" },
-			},
-			indent = {
-				enable = true,
-			},
-		})
-	end,
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    main = "nvim-treesitter",
+    build = ":TSUpdate",
+    lazy = false,
+    config = function()
+        local parsers = {
+            "c", "go", "lua", "markdown", "proto", "rust",
+            "vim", "vimdoc",
+        }
+        require("nvim-treesitter").install(parsers)
+
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function()
+                pcall(vim.treesitter.start)
+            end,
+        })
+    end,
 }

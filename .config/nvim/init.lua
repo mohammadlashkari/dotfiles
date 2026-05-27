@@ -1,3 +1,4 @@
+require("vim._core.ui2").enable({})
 require("keymap")
 require("misc")
 require("lazy_init")

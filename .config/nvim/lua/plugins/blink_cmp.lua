@@ -4,7 +4,7 @@ return {
         "rafamadriz/friendly-snippets",
         { "echasnovski/mini.pairs", version = "*", opts = {} },
     },
-    version = "1.*",
+    version = "*",
     opts = {
         keymap = { preset = "enter" },
         appearance = {
@@ -30,7 +30,6 @@ return {
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
         },
-        fuzzy = { implementation = "prefer_rust_with_warning" },
     },
     opts_extend = { "sources.default" },
 }

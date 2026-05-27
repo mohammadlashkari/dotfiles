@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
@@ -17,8 +18,3 @@ vim.keymap.set("n", "<c-right>", "<c-w>5>")
 vim.keymap.set("n", "<c-left>", "<c-w>5<")
 vim.keymap.set("n", "<c-up>", "<c-w>5+")
 vim.keymap.set("n", "<c-down>", "<c-w>5-")
-
-vim.keymap.set("n", "<leader>q", function()
-	vim.fn.setqflist({ { filename = vim.fn.expand("%"), lnum = 1, col = 1, text = vim.fn.expand("%") } }, "a")
-end)
-
