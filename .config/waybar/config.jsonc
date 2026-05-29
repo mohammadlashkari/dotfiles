@@ -2,7 +2,7 @@
 Install: 
 
 otf-font-awesome, ttf-jetbrains-mono-nerd 
-nmrs, btop, playerctl
+nmrs, btop, playerctl, bluetui
 
 */
 
@@ -101,11 +101,12 @@ nmrs, btop, playerctl
         "tooltip-format-wifi": "{essid} ({signalStrength}%) \nIP: {ipaddr}",
         "tooltip-format-ethernet": "{ifname} \nIP: {ipaddr}",
         "tooltip-format-disconnected": "󰖪",
-        "max-length": 50,
         "on-click": "exec nmrs"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}",
+        "format": "{volume}% {icon} {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
         "format-muted": "",
         "format-icons": {
             "headphone": "",
