@@ -83,7 +83,6 @@ nmrs, btop, playerctl, bluetui
     "cpu": {
         "interval": 20,
         "format": " {}%",
-        "max-length": 10,
         "on-click": "exec alacritty --title=btop -e btop"
     },
     "memory": {
@@ -93,7 +92,6 @@ nmrs, btop, playerctl, bluetui
         "on-click": "exec alacritty --title=btop -e btop",
     },
     "network": {
-        "format": "",
         "format-wifi": " {ipaddr}",
         "format-ethernet": " {ipaddr}",
         "format-disconnected": "󰤭",
@@ -104,8 +102,8 @@ nmrs, btop, playerctl, bluetui
         "on-click": "exec nmrs"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-source": "",
+        "format": "{format_source} {volume}% {icon}",
+        "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-muted": "",
         "format-icons": {
@@ -131,7 +129,7 @@ nmrs, btop, playerctl, bluetui
       ]
     },
     "tray": {
-        "icon-size": 19,
+        "icon-size": 16,
         "spacing": 10
     }
 }
